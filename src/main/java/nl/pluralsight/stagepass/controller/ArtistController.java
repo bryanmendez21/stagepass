@@ -32,7 +32,7 @@ public class ArtistController {
     @PostMapping
     public ResponseEntity<Artist> createArtist(@RequestBody Artist artist) {
         Artist created = artistService.createArtist(artist);
-        return ResponseEntity.status(201).body(created);
+        return ResponseEntity.status(201).body(created); // bug 1
     }
 
     @PutMapping("/{id}")

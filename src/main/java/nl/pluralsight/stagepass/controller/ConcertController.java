@@ -36,7 +36,7 @@ public class ConcertController {
     @PostMapping
     public ResponseEntity<Concert> createConcert(@RequestBody Concert concert) {
         Concert created = concertService.createConcert(concert);
-        return ResponseEntity.status(201).body(created);
+        return ResponseEntity.status(201).body(created); // bug 1
     }
 
     @PutMapping("/{id}")

@@ -32,7 +32,7 @@ public class VenueController {
     @PostMapping
     public ResponseEntity<Venue> createVenue(@RequestBody Venue venue) {
         Venue created = venueService.createVenue(venue);
-        return ResponseEntity.status(201).body(created);
+        return ResponseEntity.status(201).body(created); // bug 1
     }
 
     @PutMapping("/{id}")
