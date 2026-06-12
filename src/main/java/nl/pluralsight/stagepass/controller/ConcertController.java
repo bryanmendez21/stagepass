@@ -1,6 +1,7 @@
 package nl.pluralsight.stagepass.controller;
 
 import jakarta.validation.Valid;
+import nl.pluralsight.stagepass.model.Artist;
 import nl.pluralsight.stagepass.model.Concert;
 import nl.pluralsight.stagepass.service.BookingService;
 import nl.pluralsight.stagepass.service.ConcertService;
@@ -31,6 +32,12 @@ public class ConcertController {
         return concertService.getConcertById(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
+    }
+
+    // feature 2
+    @GetMapping("artist/{artistId}")
+    public ResponseEntity<List<Concert>> findByArtistId(@PathVariable Long artistId) {
+        return ResponseEntity.ok(concertService.getConcertsByArtist(artistId));
     }
 
     @PostMapping

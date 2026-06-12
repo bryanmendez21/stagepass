@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class ConcertService {
@@ -18,14 +19,24 @@ public class ConcertService {
     }
 
     public List<Concert> getAllConcerts() {
+
         return concertRepository.findAll();
     }
 
     public Optional<Concert> getConcertById(Long id) {
+
         return concertRepository.findById(id);
     }
 
+    // feature 2
+    public List<Concert> getConcertsByArtist(Long artistId) {
+        return concertRepository.findAll().stream()
+                .filter(c -> c.getArtist().getId().equals(artistId))
+                .collect(Collectors.toList());
+    }
+
     public Concert createConcert(Concert concert) {
+
         return concertRepository.save(concert);
     }
 
