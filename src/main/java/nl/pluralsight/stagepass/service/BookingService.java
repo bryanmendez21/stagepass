@@ -33,7 +33,8 @@ public class BookingService {
     }
 
     public List<Booking> getBookingsByConcert(Long concertId) {
-        return bookingRepository.findAll();
+
+        return bookingRepository.findByConcertId(concertId); // bug 5
     }
 
     @Transactional
