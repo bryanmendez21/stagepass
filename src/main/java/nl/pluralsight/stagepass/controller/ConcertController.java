@@ -8,6 +8,7 @@ import nl.pluralsight.stagepass.service.ConcertService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -38,6 +39,12 @@ public class ConcertController {
     @GetMapping("artist/{artistId}")
     public ResponseEntity<List<Concert>> findByArtistId(@PathVariable Long artistId) {
         return ResponseEntity.ok(concertService.getConcertsByArtist(artistId));
+    }
+
+    // feature 3
+    @GetMapping("/upcoming")
+    public ResponseEntity<List<Concert>> UpcomingConcerts() {
+        return ResponseEntity.ok(concertService.getUpcomingConcerts());
     }
 
     @PostMapping
