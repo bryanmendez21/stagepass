@@ -14,5 +14,13 @@ public class GlobalExceptionHandler {
     public ResponseEntity<Map<String, String>> handleInsufficientSeats(InsufficientSeatsException ex) {
         return ResponseEntity.status(HttpStatus.CONFLICT)
                 .body(Map.of("message", ex.getMessage()));
+
+    }
+    // concert not found handler
+    @ExceptionHandler(RuntimeException.class)
+    public ResponseEntity<Map<String, String>> handleNoConcert(RuntimeException ex) {
+        return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                .body(Map.of("message", ex.getMessage()));
+
     }
 }
